@@ -1,0 +1,28 @@
+name: Build Windows EXE
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install customtkinter and pyinstaller
+        run: pip install customtkinter pyinstaller
+
+      - name: Build single EXE
+        run: python build.py
+
+      - name: Upload EXE artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: HelloWorldApp-Windows
+          path: dist/HelloWorldApp.exe
