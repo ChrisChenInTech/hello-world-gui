@@ -3,6 +3,8 @@ name: Build Windows EXE
 on:
   push:
     branches: [main]
+    tags:
+      - "v*"
 
 jobs:
   build:
@@ -26,3 +28,10 @@ jobs:
         with:
           name: HelloWorldApp-Windows
           path: dist/HelloWorldApp.exe
+
+      - name: Create GitHub Release and upload EXE
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/HelloWorldApp.exe
+          generate_release_notes: true
