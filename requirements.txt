@@ -1,0 +1,4 @@
+# Hello World Desktop App - install: pip install -r requirements.txt
+customtkinter>=5.2.0
+# For packaging to .exe: pip install pyinstaller then run python build.py
+pyinstaller>=6.0.0
