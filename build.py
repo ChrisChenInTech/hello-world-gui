@@ -25,7 +25,7 @@ def main() -> None:
         "main.py",
     ]
     subprocess.run(cmd, check=True)
-    print("打包完成。執行檔位於：dist/HelloWorldApp.exe")
+    print("Build completed successfully. Executable located at: dist/HelloWorldApp.exe")
 
 
 if __name__ == "__main__":
